@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Regex Tester</title>
+        <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+        <div id="container">
+                <h1>Regex Tester</h1>
+
+                <div id="regexWrapper">
+                        <label for="regexInput">Regex Pattern:</label>
+                        <input id="regexInput" type="text" placeholder="/pattern/flags"><br><br>
+                        <div id="regexBadge"></div>
+                </div>
+
+                <div id="inputOutputWrapper">
+                        <div id="highlightedDisplay"></div>
+                        <textarea id="stringInput"></textarea>
+                </div>
+        </div>
+
+        <script src="script.js"></script>
+        <script>
+                const input = document.getElementById('stringInput');
+                const highlight = document.getElementById('highlightedDisplay');
+                const wrapper = document.getElementById('inputOutputWrapper');
+
+                // Scroll syncing
+                input.addEventListener('scroll', function() {
+                        highlight.scrollTop = this.scrollTop;
+                        highlight.scrollLeft = this.scrollLeft;
+                });
+
+                // Auto-resize textarea and wrapper magic
+                input.addEventListener('input', function() {
+                        this.style.height = 'auto'; // Reset height first (in case of deletion)
+                        this.style.height = this.scrollHeight + 'px'; // Grow to fit content
+
+                        // Resize the wrapper to match the textarea
+                        wrapper.style.height = this.scrollHeight + 'px';
+                });
+        </script>
+        <script>
+                const regexInput = document.getElementById('regexInput');
+                const regexBadge = document.getElementById('regexBadge');
+                
+                regexInput.addEventListener('input', function() {
+                    const value = this.value.trim();
+                    if (!value) {
+                        regexBadge.style.opacity = 0;
+                        return;
+                    }
+                
+                    try {
+                        // Try to create a regex
+                        let pattern = value;
+                        let flags = '';
+                
+                        // Support /pattern/flags syntax
+                        if (value.startsWith('/') && value.lastIndexOf('/') > 0) {
+                            const lastSlash = value.lastIndexOf('/');
+                            pattern = value.slice(1, lastSlash);
+                            flags = value.slice(lastSlash + 1);
+                        }
+                
+                        new RegExp(pattern, flags);
+                
+                        // If success
+                        regexBadge.textContent = "✓ Valid";
+                        regexBadge.style.backgroundColor = "#2a2"; // Green
+                        regexBadge.style.opacity = 1;
+                
+                    } catch (e) {
+                        // If error
+                        regexBadge.textContent = e.message;
+                        regexBadge.style.backgroundColor = "#a00"; // Red
+                        regexBadge.style.opacity = 1;
+                    }
+                });
+        </script>
+</body>
+</html>

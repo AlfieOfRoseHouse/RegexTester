@@ -1,0 +1,115 @@
+/* For background */
+body {
+        background-color: #ddd;
+}
+
+/* Container around everything */
+#container {
+        background-color: #222;
+        border: 3px solid #555;
+        border-radius: 10px;
+        box-shadow: 3px 4px 5px 5px #000;
+        padding: 2rem;
+        margin: 2rem auto;
+        max-width: 800px;
+        text-align: center;
+
+        color: #ddd;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1em;
+}
+
+#regexWrapper {
+        position: relative;
+        display: inline-block;
+        width: 85%;
+}
+#regexInput {
+        background-color: #1a1a1a;
+        border: 2px solid #444;
+        border-radius: 6px;
+        padding: 0.6rem;
+        width: 100%;
+        color: #ddd;
+        font-size: 1em;
+}
+#regexBadge {
+        position: absolute;
+        top: 35%;
+        right: -10px;
+        background-color: #a44;
+        color: #ddd;
+        padding: 0.5rem;
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
+        border-radius: 6px;
+        font-size: 0.8em;
+        font-family: inherit;
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+label {
+        display: block;
+        margin: 1rem 0 0.5rem;
+        font-weight: bold;
+        width: 83%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+}
+
+#inputOutputWrapper {
+        position: relative;
+        width: 95%;
+        margin: 0 auto;
+        background-color: #111;
+        border: 2px solid #444;
+        border-radius: 8px;
+        min-height: 150px;
+        overflow: hidden;
+        padding: 0.5rem;
+        transition: height 0.3s ease;
+        box-sizing: border-box;
+}
+#highlightedDisplay {
+        position: absolute;
+        color: #ddd;
+        pointer-events: none;
+}
+#stringInput {
+        position: relative;
+        background: none;
+        border: none;
+        outline: none;
+        color: transparent;
+        caret-color: #ddd;
+        resize: none;
+}
+#highlightedDisplay,
+#stringInput {
+        font-family: inherit;
+        font-size: inherit;
+        white-space: pre-wrap;
+        word-break: break-word;
+        line-height: 1.5;
+        text-align: left;
+        overflow: hidden;
+        width: 100%;
+        padding: 0.5rem;
+}
+
+#stringInput::-webkit-scrollbar {
+        display: none;
+}
+
+/* Highlighted Matches */
+mark {
+        background: linear-gradient(90deg, rgba(32,160,32,0.6), rgba(32,160,32,0.8));
+        border-radius: 3px;
+        color: inherit;
+        font-weight: normal;
+        padding-top: 2px;
+}    

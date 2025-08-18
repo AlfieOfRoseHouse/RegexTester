@@ -13,7 +13,7 @@ This is a simple Regex Tester
 **-- Usage --**
 
 1. Open:
-  [Use!](https://alfieofrosehouse.github.io/RegexTester/)
+  [Use!](https://alfiewpearce.github.io/RegexTester/)
 2. Type in your regex, and your input will automatically be highlighted to show what it matches
 3. Regex can be written as: _/pattern/key_ or _pattern/key_ or _pattern_
 
